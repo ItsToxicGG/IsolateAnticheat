@@ -68,7 +68,8 @@ class FlyB extends Check {
     
         $airAround = Blocks::isInAir($player);
 
-        if ($airAround){
+        // isOnGround can be bypassable by clients..
+        if ($airAround || !$player->isOnGround()){
             if ($player->getInAirTicks() > 25) {
                 $this->flag($player, "Movement");
             } 
