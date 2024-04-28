@@ -7,7 +7,7 @@ authors:
 - "ImShadowBonnieDev"
 api: 5.0.0
 main: Toxic\IAC
-src-namespace-prefix: ItsToxicGG
+src-namespace-prefix: Toxic
 
 permissions:
    iac.bypass:
