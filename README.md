@@ -7,8 +7,6 @@ now in PocketMine-MP
 
 *This is just a test and made because of boardem*
 
-*Alternative anticheats - Zuri, DAC & Guardian + not recommend oomph* 
-
 ## Features
 
 - Isolate Anticheat in PMMP
@@ -19,7 +17,7 @@ Below are some of the checks implemented in Isolate Anticheat:
 
 **MAIN CHECKS:**
 - [ ] Fly [A ✅, B ❌, C ❌]
-- [ ] Speed [A ⭕, B ⭕] [Testing needed before confirmed 'completed']
+- [ ] Speed [A ✅, B ⭕] [Testing needed before confirmed 'completed']
 - [ ] Motion [A ❌, B ❌]
 - [ ] Scaffold [A ❌, B ❌, C ❌]
 
