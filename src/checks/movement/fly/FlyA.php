@@ -64,7 +64,7 @@ class FlyA extends Check {
     
             if (!$player->isGliding()) {
                 $prediction = (
-                    ($playerVelocity->y > $maxVerticalVelocity && $airAround && $playerVelocity->y !== 1 && ($session->getPlacingTicks() < 40 && $playerVelocity->y > 5) && ($session->getAttackTicks() < 40 && $playerVelocity->y > 10)) ||
+                    ($playerVelocity->y > $maxVerticalVelocity && $airAround && $playerVelocity->y !== 1 && $session->getPlacingTicks() < 40 && $session->getAttackTicks() < 40) ||
                     ($playerVelocity->y < -4.92 - $fallDistance && $airAround && $playerVelocity->y !== -1 && $playerVelocity->y > -9)                    
                 );
     

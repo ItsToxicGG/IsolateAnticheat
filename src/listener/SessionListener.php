@@ -28,7 +28,7 @@ class SessionListener implements Listener {
     public function onPacketRecieve(DataPacketReceiveEvent $event){
         $packet = $event->getPacket();
 		$player = $event->getOrigin()->getPlayer();
-		if ($player === null) {
+		if ($player == null) {
 			return;
 		}
         $session = Session::get($player);
