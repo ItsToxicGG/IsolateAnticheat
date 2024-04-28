@@ -15,7 +15,7 @@ Below are some of the checks implemented in Isolate Anticheat:
 
 **MAIN CHECKS:**
 - [ ] Fly [A ✅, B ❌, C ❌]
-- [ ] Speed [A ❌, B ❌]
+- [ ] Speed [A ⭕, B ⭕] [Testing needed before confirmed 'completed']
 - [ ] Motion [A ❌, B ❌]
 - [ ] Scaffold [A ❌, B ❌, C ❌]
 

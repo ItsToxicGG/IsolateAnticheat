@@ -53,9 +53,11 @@ abstract class Check {
 
         $flagged = $this->flag[$uuid][$this->getId()];
 
-        if ($flagged > $this->getMaxViolations()){
+        if ($flagged > $this->getMaxViolations()){ 
             $this->emptyFlags($player, $type, $this->getId());
             $this->notify($player, true);
+ 
+            if (!$this->kick()) return;
 
             $player->kick(TF::WHITE . "You were kicked from the game: " . self::PREFIX . ">>" . TF::GOLD . "Unfair Advantage. " . TF::BLACK . "[" . TF::DARK_RED . $this->getName() . TF::BLACK . "]");
         } else {
@@ -75,11 +77,12 @@ abstract class Check {
 
     public function notify(Player $player, bool $kick = false){
         foreach (Server::getInstance()->getOnlinePlayers() as $staff) {
+            $uuid = $player->getUniqueId()->__toString();            
             if ($this->bypass($staff)){
                 if (!$kick){
-                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has failed " . self::TYPE . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . "." . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . "14" . TF::WHITE . "]");
+                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has failed " . self::TYPE . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . "." . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
                 } else {
-                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has been kicked " . self::TYPE . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . "." . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . "14" . TF::WHITE . "]");
+                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has been kicked " . self::TYPE . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . "." . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
                 }
             }
 		}

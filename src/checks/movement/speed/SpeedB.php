@@ -40,18 +40,7 @@ class SpeedA extends Check {
         $player = $event->getPlayer();
         $session = Session::get($player);
         if ($session === null) return;
-    
-        $currentPos = $event->getFrom();
-        $previousPos = $event->getTo();
-    
-        $distanceX = $currentPos->getX() - $previousPos->getX();
-        $distanceY = $currentPos->getY() - $previousPos->getY();
-        $distanceZ = $currentPos->getZ() - $previousPos->getZ();
-    
-        $distance = sqrt($distanceX * $distanceX + $distanceY * $distanceY + $distanceZ * $distanceZ);
-    
-        $speed = $distance / 0.1;
-    
-        $player->sendMessage(Check::PREFIX . "speed=$speed");
+
+        $speed = Maths::getSpeed($player, $event->getFrom());
     }
 }

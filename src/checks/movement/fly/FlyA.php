@@ -64,7 +64,7 @@ class FlyA extends Check {
     
             if (!$player->isGliding()) {
                 $prediction = (
-                    ($playerVelocity->y > $maxVerticalVelocity && $airAround && $playerVelocity->y !== 1 && ($session->getTag("placing") || $playerVelocity->y > 5) && (!$session->getTag("damaged") || $playerVelocity->y > 10)) ||
+                    ($playerVelocity->y > $maxVerticalVelocity && $airAround && $playerVelocity->y !== 1 && ($session->getPlacingTicks() < 40 || $playerVelocity->y > 5) && ($session->getAttackTicks() < 40 || $playerVelocity->y > 10)) ||
                     ($playerVelocity->y < -4.92 - $fallDistance && $airAround && $playerVelocity->y !== -1 && $playerVelocity->y > -9)
                 );
     
@@ -73,22 +73,5 @@ class FlyA extends Check {
                 }
             }
         }
-    }
-
-    public function onDamage(EntityDamageEvent $event){
-        $player = $event->getEntity();
-        if (!$player instanceof Player) return;
-        $session = Session::get($player);
-        if ($session === null) return;
-
-        $session->setTag("damaged", true);
-    }
-
-    public function onPlace(BlockPlaceEvent $event){
-        $player = $event->getPlayer();
-        $session = Session::get($player);
-        if ($session === null) return;
-
-        $session->setTag("place", true);
     }
 }

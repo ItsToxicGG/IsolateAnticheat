@@ -3,15 +3,18 @@
 namespace Toxic\checks;
 
 use Toxic\checks\movement\fly\{FlyA};
-use Toxic\checks\movement\speed\{MotionA};
-use Toxic\checks\movement\speed\{SpeedA};
-use Toxic\checks\movement\speed\{ScaffoldA};
+use Toxic\checks\movement\motion\{MotionA};
+use Toxic\checks\movement\speed\{SpeedA, SpeedB};
+use Toxic\checks\world\scaffold\{ScaffoldA};
 
 class Registery {
 
     public static function register(){
         $checks = [
             new FlyA(),
+            //new MotionA(),
+            new SpeedA(),
+            new SpeedB()
         ];
 
         foreach ($checks as $check){
