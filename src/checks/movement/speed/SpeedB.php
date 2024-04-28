@@ -39,7 +39,7 @@ class SpeedB extends Check {
     public function onMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
 
         $speed = Maths::getSpeed($player, $event->getFrom());
     }

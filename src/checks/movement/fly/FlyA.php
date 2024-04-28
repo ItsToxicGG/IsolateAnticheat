@@ -41,7 +41,7 @@ class FlyA extends Check {
     public function onMove(PlayerMoveEvent $event){
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         $to = $event->getTo();
         $from = $event->getFrom();
     
@@ -64,8 +64,8 @@ class FlyA extends Check {
     
             if (!$player->isGliding()) {
                 $prediction = (
-                    ($playerVelocity->y > $maxVerticalVelocity && $airAround && $playerVelocity->y !== 1 && ($session->getPlacingTicks() < 40 || $playerVelocity->y > 5) && ($session->getAttackTicks() < 40 || $playerVelocity->y > 10)) ||
-                    ($playerVelocity->y < -4.92 - $fallDistance && $airAround && $playerVelocity->y !== -1 && $playerVelocity->y > -9)
+                    ($playerVelocity->y > $maxVerticalVelocity && $airAround && $playerVelocity->y !== 1 && ($session->getPlacingTicks() < 40 && $playerVelocity->y > 5) && ($session->getAttackTicks() < 40 && $playerVelocity->y > 10)) ||
+                    ($playerVelocity->y < -4.92 - $fallDistance && $airAround && $playerVelocity->y !== -1 && $playerVelocity->y > -9)                    
                 );
     
                 if ($prediction) {

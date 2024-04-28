@@ -32,7 +32,7 @@ class SessionListener implements Listener {
 			return;
 		}
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
 
         if ($packet instanceof PlayerAuthInputPacket){
             $inputMode = $packet->getInputMode();
@@ -49,21 +49,21 @@ class SessionListener implements Listener {
         $player = $event->getEntity();
         if (!$player instanceof Player) return;
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         $session->setTeleportTicks();
     }
 
     public function onMove(PlayerMoveEvent $event){
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         $session->setMovementTicks();
     }
 
     public function onJump(PlayerJumpEvent $event){
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         $session->setJumpTicks();
     }
 
@@ -84,7 +84,7 @@ class SessionListener implements Listener {
         }
         if ($damager instanceof Player){
             $session = Session::get($damager);
-            if ($session === null) return;
+            if ($session == null) return;
             $session->setAttackingTicks();
         }
     }
@@ -92,14 +92,14 @@ class SessionListener implements Listener {
     public function onJoin(PlayerJoinEvent $event){
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         $session->setOnlineTicks();
     }
 
     public function onQuit(PlayerQuitEvent $event){
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         $playerId = $player->getUniqueId()->toString();
         unset($session->deathTicks[$playerId]);
         unset($session->onlineTicks[$playerId]);
@@ -108,14 +108,14 @@ class SessionListener implements Listener {
     public function onDeath(PlayerDeathEvent $event){
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         $session->setDeathTicks();
     }
 
     public function onChat(PlayerChatEvent $event){
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         $session->setChatTicks();
     }
     
@@ -123,7 +123,7 @@ class SessionListener implements Listener {
         $player = $event->getEntity();
         if (!$player instanceof Player) return;
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         ## Prevent Motion from jumping
         if ($session->isJumping()) return;
         $session->setMotionTicks();
@@ -132,28 +132,28 @@ class SessionListener implements Listener {
     public function onGlide(PlayerToggleGlideEvent $event){
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         $session->setGlideTicks();
     }
 
     public function onFlight(PlayerToggleFlightEvent $event){
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         $session->setFlightTicks();
     }
 
     public function onPlace(PlayerToggleFlightEvent $event){
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
         $session->setPlacingTicks();
     }
 
     public function onBreak(PlayerToggleFlightEvent $event){
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
     }
 
     public function onLogin(PlayerLoginEvent $event){

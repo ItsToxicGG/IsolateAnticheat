@@ -39,7 +39,7 @@ class SpeedA extends Check {
     public function onMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
         $session = Session::get($player);
-        if ($session === null) return;
+        if ($session == null) return;
     
         $currentPos = $event->getFrom();
         $previousPos = $event->getTo();
