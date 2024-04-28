@@ -2,6 +2,7 @@
 
 namespace Toxic\checks\movement\fly;
 
+use pocketmine\block\VanillaBlocks;
 use pocketmine\entity\effect\VanillaEffects;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\entity\EntityDamageEvent;
@@ -12,7 +13,7 @@ use Toxic\checks\Check;
 use Toxic\Session;
 use Toxic\utils\Blocks;
 
-class FlyA extends Check {
+class FlyB extends Check {
 
     public function getId(): int{
         return 0;
@@ -27,7 +28,7 @@ class FlyA extends Check {
     }
 
     public function getSubtype(): string{
-        return "A";
+        return "B";
     }
 
     public function getType(): string{
@@ -49,29 +50,28 @@ class FlyA extends Check {
         if ($player->getEffects()->has(VanillaEffects::JUMP_BOOST()) || $to->y < $from->y) {
             return;
         }
-    
-        $deltaX = $to->x - $from->x;
-        $deltaY = $to->y - $from->y;
-        $deltaZ = $to->z - $from->z;
-    
-        $playerVelocity = new Vector3($deltaX, $deltaY, $deltaZ);
+
+        # False kick prevention
+        if (
+            $session->getAttackTicks() < 40 ||
+            $session->getTeleportTicks() < 40 ||
+            $session->getMotionTicks() < 30 ||
+            $this->bypass($player) ||
+            Blocks::isInBlock($player, VanillaBlocks::COBWEB()) ||
+            Blocks::isInBlock($player, VanillaBlocks::WATER()) ||
+            Blocks::isInBlock($player, VanillaBlocks::LAVA()) ||
+            Blocks::isOnClimbable($player) ||
+            $player->getAllowFlight()         
+        ){
+            return;
+        }
     
         $airAround = Blocks::isInAir($player);
-        $fallDistance = $player->getFallDistance();
-    
-        if ($airAround && (!$player->isOnGround() || abs($playerVelocity->y) > 3) && $player->getInAirTicks() > 25) {
-            $maxVerticalVelocity = $session->isJumping() ? 0.8 : 0.62;
-    
-            if (!$player->isGliding()) {
-                $prediction = (
-                    ($playerVelocity->y > $maxVerticalVelocity && $airAround && $playerVelocity->y !== 1 && $session->getPlacingTicks() < 40 && $session->getAttackTicks() < 40) ||
-                    ($playerVelocity->y < -4.92 && $airAround && $playerVelocity->y !== -1 && $playerVelocity->y > -9)                    
-                );
-    
-                if ($prediction) {
-                    $this->flag($player, "Movement");
-                }
-            }
+
+        if ($airAround){
+            if ($player->getInAirTicks() > 25) {
+                $this->flag($player, "Movement");
+            } 
         }
     }
 }

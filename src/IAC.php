@@ -13,6 +13,16 @@ use Toxic\listener\SessionListener;
 
 class IAC extends PluginBase implements Listener {
 
+    public static $instance;
+
+    public function onLoad(): void{
+        self::$instance = $this;
+    }
+
+    public static function getInstance(){
+        return self::$instance;
+    }
+
     protected function onEnable(): void{
         ##Events
         $this->getServer()->getPluginManager()->registerEvents(new CheckListener(), $this);

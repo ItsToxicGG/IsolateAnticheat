@@ -6,6 +6,7 @@ use pocketmine\event\Listener;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\Server;
+use Toxic\IAC;
 
 abstract class Check {
 
@@ -60,6 +61,7 @@ abstract class Check {
             $player->kick(TF::WHITE . "You were kicked from the game: " . self::PREFIX . ">>" . TF::GOLD . "Unfair Advantage. " . TF::BLACK . "[" . TF::DARK_RED . $this->getName() . TF::BLACK . "]");
         } else {
             $this->notify($player);
+            IAC::getInstance()->getLogger()->notice(Check::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has failed " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . "." . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
             $this->flag[$player->getUniqueId()->__toString()][$this->getId()] += 1;
 			if (!isset($this->lastFlag[$player->getUniqueId()->__toString()][$this->getId()])) {
 				$this->lastFlag[$player->getUniqueId()->__toString()][$this->getId()] = microtime(true);

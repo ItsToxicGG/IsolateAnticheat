@@ -33,7 +33,7 @@ class SpeedA extends Check {
     }
 
     public function kick(): bool{
-        return false;
+        return true;
     }
 
     public function onMove(PlayerMoveEvent $event): void {
