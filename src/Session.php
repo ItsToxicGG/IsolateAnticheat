@@ -96,7 +96,9 @@ class Session {
     
     public function setTeleportTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
+        
         $this->teleportTime[$playerId] = microtime(true) * 20;
     }
     
@@ -113,6 +115,7 @@ class Session {
     
     public function setAttackTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->attackTime[$playerId] = microtime(true) * 20;
     }
@@ -130,6 +133,7 @@ class Session {
     
     public function setBlastAttackTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->blastAttackTime[$playerId] = microtime(true) * 20;
     }
@@ -147,6 +151,7 @@ class Session {
     
     public function setJumpTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->jumpTime[$playerId] = microtime(true) * 20;
     }
@@ -164,6 +169,7 @@ class Session {
     
     public function setPlacingTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->placingTime[$playerId] = microtime(true) * 20;
     }
@@ -181,6 +187,7 @@ class Session {
     
     public function setDeathTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->deathTicks[$playerId] = microtime(true) * 20;
     }
@@ -198,6 +205,7 @@ class Session {
     
     public function setOnlineTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->onlineTicks[$playerId] = microtime(true) * 20;
     }
@@ -215,6 +223,7 @@ class Session {
     
     public function setSlimeTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->slimeTicks[$playerId] = microtime(true) * 20;
     }
@@ -232,6 +241,7 @@ class Session {
     
     public function setMovementTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->movementTicks[$playerId] = microtime(true) * 20;
     }
@@ -249,6 +259,7 @@ class Session {
     
     public function setFlightTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->flightTicks[$playerId] = microtime(true) * 20;
     }
@@ -266,6 +277,7 @@ class Session {
     
     public function setPhaseTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->phaseTicks[$playerId] = microtime(true) * 20;
     }
@@ -283,6 +295,7 @@ class Session {
     
     public function setAttackingTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->attackingTicks[$playerId] = microtime(true) * 20;
     }
@@ -300,6 +313,7 @@ class Session {
     
     public function setGlideTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->glideTicks[$playerId] = microtime(true) * 20;
     }
@@ -317,7 +331,7 @@ class Session {
     
     public function setMotionTicks(): void {
         $player = $this->getPlayer();
-        
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->motionTicks[$playerId] = microtime(true) * 20;
     }
@@ -335,6 +349,7 @@ class Session {
     
     public function setChatTicks(): void {
         $player = $this->getPlayer();
+        if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->chatTicks[$playerId] = microtime(true) * 20;
     }
