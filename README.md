@@ -6,6 +6,7 @@ Isolate Anticheat originally an Vanila BehaviourPack anticheat mean't for worlds
 now in PocketMine-MP
 
 *This is just a test and made because of boardem*
+*Soon ill opmitize the checks to be efficient*
 
 ## Features
 
@@ -15,15 +16,24 @@ now in PocketMine-MP
 
 Below are some of the checks implemented in Isolate Anticheat:
 
-**MAIN CHECKS:**
-- [ ] Fly [A ✅, B ✅, C ❌]
-- [ ] Speed [A ✅, B ⭕] [Testing needed before confirmed 'completed']
-- [ ] Motion [A ❌, B ❌]
-- [ ] Scaffold [A ❌, B ❌, C ❌]
+**CHECKS [INCLUDING PLANNED ONES]:**
+
+✅ = Completed
+⭕ = Working on it
+❌ = Todo
+
+| Check | Status | Detection rate |
+| -------- | -------- | -------- |
+| Speed (A) | ✅ | 91% |
+| Speed (B) | ⭕ | ⭕ |
+| Fly (A) | ✅ | 14% |
+| Fly (B) | ✅ | 97% |
+| Motion (A, B, C) | ❌ | ❌ | 
+| Scaffold (A, B, C) | ❌ | ❌ | 
 
 ## Authors
 
-- [ItsToxicGG](https://github.com/johndoe](https://github.com/ItsToxicGG/))
+- [ItsToxicGG]([https://github.com/ItsToxicGG/])
 
 Original Authors:
 

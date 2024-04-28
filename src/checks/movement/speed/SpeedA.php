@@ -9,6 +9,7 @@ use pocketmine\Server;
 use pocketmine\world\Position;
 use Toxic\checks\Check;
 use Toxic\Session;
+use Toxic\utils\Blocks;
 use Toxic\utils\Maths;
 
 class SpeedA extends Check {
@@ -59,21 +60,25 @@ class SpeedA extends Check {
         if ($session->getAttackTicks() < 40) return;
         if ($session->getFlightTicks() < 40) return;
         if ($session->getGlideTicks() < 40) return;
+        $isOnStairs = Blocks::isOnStairs($event->getTo(), 0) || Blocks::isOnStairs($event->getTo(), 1);
+
+        // For now soon ill get maxSpeed when player is on stairs ;D
+        if ($isOnStairs) return;
 
         if ($player->isSprinting() && $session->isJumping()){
             $maxSpeed = 13.1;
         }
 
         if (!$player->isSprinting() && !$session->isJumping()){
-            $maxSpeed = 9.7;
+            $maxSpeed = 8.4;
         }
 
         if (!$player->isSprinting() && $session->isJumping()){
-            $maxSpeed = 9.0;
+            $maxSpeed = 8.0;
         }
 
         if ($player->isSprinting() && !$session->isJumping()){
-            $maxSpeed = 11.1; // eh? 1 point ahead of one on top how tf?
+            $maxSpeed = 11.1; 
         }
 
         if ($speed > $maxSpeed){

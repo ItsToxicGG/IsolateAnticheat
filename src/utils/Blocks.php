@@ -6,6 +6,8 @@ use pocketmine\block\BlockTypeIds;
 use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
+use pocketmine\entity\Location;
+use pocketmine\world\World;
 
 class Blocks {
 
@@ -98,6 +100,8 @@ public static function isInAir(Player $player): bool{
     return false;
 }	
 
+
+
     /**
      * @param Player $player
      * @return bool
@@ -167,4 +171,108 @@ public static function isInAir(Player $player): bool{
         }
         return false;
     }
+
+    /**
+ * Checks if the given location is under a block of specified types.
+ *
+ * @param Location $location The location to check.
+ * @param array $blockTypes An array of block types to check against.
+ * @param int $down The distance below the location to check for blocks.
+ * @return bool True if the location is under a block of specified types, false otherwise.
+ */
+public static function isUnderBlock(Location $location, array $blockTypes, int $down): bool {
+    $posX = $location->getX();
+    $posZ = $location->getZ();
+    
+    // Calculate fractional parts of X and Z coordinates
+    $fracX = abs(fmod($posX, 1.0));
+    $fracZ = abs(fmod($posZ, 1.0));
+
+    $world = $location->getWorld();
+    
+    // Check directly below the location
+    if (self::checkBlockBelow($world, $posX, $location->getY() - $down, $posZ, $blockTypes)) {
+        return true;
+    }
+
+    // Check adjacent blocks based on fractional parts of X and Z coordinates
+    if ($fracX < 0.3) {
+        if ($fracZ < 0.3) {
+            if (self::checkAdjacentBlocks($world, $posX, $location->getY() - $down, $posZ, $blockTypes, -1, -1)) {
+                return true;
+            }
+        } elseif ($fracZ > 0.7) {
+            if (self::checkAdjacentBlocks($world, $posX, $location->getY() - $down, $posZ, $blockTypes, -1, 1)) {
+                return true;
+            }
+        }
+    } elseif ($fracX > 0.7) {
+        if ($fracZ < 0.3) {
+            if (self::checkAdjacentBlocks($world, $posX, $location->getY() - $down, $posZ, $blockTypes, 1, -1)) {
+                return true;
+            }
+        } elseif ($fracZ > 0.7) {
+            if (self::checkAdjacentBlocks($world, $posX, $location->getY() - $down, $posZ, $blockTypes, 1, 1)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Checks if there is a block of specified types directly below the given coordinates.
+ */
+private static function checkBlockBelow(World $world, float $x, float $y, float $z, array $blockTypeIds): bool {
+    return in_array($world->getBlock(new Vector3($x, $y, $z))->getTypeId(), $blockTypeIds, true);
+}
+
+/**
+ * Checks adjacent blocks based on offsets from the given coordinates.
+ */
+private static function checkAdjacentBlocks(World $world, float $x, float $y, float $z, array $blockTypes, int $xOffset, int $zOffset): bool {
+    $blockX = $x + $xOffset;
+    $blockZ = $z + $zOffset;
+    return self::checkBlockBelow($world, $blockX, $y, $blockZ, $blockTypes);
+}
+
+public static function isOnStairs(Location $location, int $down){
+    $skip = [
+        BlockTypeIds::STONE_STAIRS,
+        BlockTypeIds::OAK_STAIRS,
+        BlockTypeIds::BIRCH_STAIRS,
+        BlockTypeIds::BRICK_STAIRS,
+        BlockTypeIds::STONE_BRICK_STAIRS,
+        BlockTypeIds::ACACIA_STAIRS,
+        BlockTypeIds::JUNGLE_STAIRS,
+        BlockTypeIds::PURPUR_STAIRS,
+        BlockTypeIds::QUARTZ_STAIRS,
+        BlockTypeIds::SPRUCE_STAIRS,
+        BlockTypeIds::DIORITE_STAIRS,
+        BlockTypeIds::GRANITE_STAIRS,
+        BlockTypeIds::ANDESITE_STAIRS,
+        BlockTypeIds::DARK_OAK_STAIRS,
+        BlockTypeIds::END_STONE_BRICKS,
+        BlockTypeIds::SANDSTONE_STAIRS,
+        BlockTypeIds::PRISMARINE_STAIRS,
+        BlockTypeIds::COBBLESTONE_STAIRS,
+        BlockTypeIds::NETHER_BRICK_STAIRS,
+        BlockTypeIds::RED_SANDSTONE_STAIRS,
+        BlockTypeIds::SMOOTH_QUARTZ_STAIRS,
+        BlockTypeIds::DARK_PRISMARINE_STAIRS,
+        BlockTypeIds::POLISHED_DIORITE_STAIRS,
+        BlockTypeIds::POLISHED_GRANITE_STAIRS,
+        BlockTypeIds::RED_NETHER_BRICK_STAIRS,
+        BlockTypeIds::SMOOTH_SANDSTONE_STAIRS,
+        BlockTypeIds::MOSSY_COBBLESTONE_STAIRS,
+        BlockTypeIds::MOSSY_STONE_BRICK_STAIRS,
+        BlockTypeIds::POLISHED_ANDESITE_STAIRS,
+        BlockTypeIds::PRISMARINE_BRICKS_STAIRS,
+        BlockTypeIds::SMOOTH_RED_SANDSTONE_STAIRS
+    ];
+
+    return self::isUnderBlock($location, $skip, $down);
+}
+
 }
