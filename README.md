@@ -1,5 +1,7 @@
 # Isolate Anticheat (IAC)
 
+***_PLUGIN UNDER DEVELOPMENT - DO NOT USE_***
+
 Isolate Anticheat originally an Vanila BehaviourPack anticheat mean't for worlds, realms and servers that are bds or bdsx software
 now in PocketMine-MP
 
