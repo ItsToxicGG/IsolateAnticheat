@@ -85,6 +85,7 @@ class Session {
     
     public function getTeleportTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -101,6 +102,7 @@ class Session {
     
     public function getAttackTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -117,6 +119,7 @@ class Session {
     
     public function getBlastAttackTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -133,6 +136,7 @@ class Session {
     
     public function getJumpTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -149,6 +153,7 @@ class Session {
     
     public function getPlacingTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -165,6 +170,7 @@ class Session {
     
     public function getDeathTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -181,6 +187,7 @@ class Session {
     
     public function getOnlineTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -197,6 +204,7 @@ class Session {
     
     public function getSlimeTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -213,6 +221,7 @@ class Session {
     
     public function getMovementTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -229,6 +238,7 @@ class Session {
     
     public function getFlightTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -245,6 +255,7 @@ class Session {
     
     public function getPhaseTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -261,6 +272,7 @@ class Session {
     
     public function getAttackingTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -277,6 +289,7 @@ class Session {
     
     public function getGlideTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -293,6 +306,7 @@ class Session {
     
     public function getMotionTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     
@@ -303,12 +317,14 @@ class Session {
     
     public function setMotionTicks(): void {
         $player = $this->getPlayer();
+        
         $playerId = $player->getUniqueId()->toString();
         $this->motionTicks[$playerId] = microtime(true) * 20;
     }
     
     public function getChatTicks(): float {
         $player = $this->getPlayer();
+        if ($player == null) return PHP_FLOAT_MAX;
         $playerId = $player->getUniqueId()->toString();
         $currentTime = microtime(true) * 20;
     

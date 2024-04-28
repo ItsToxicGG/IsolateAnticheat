@@ -29,5 +29,8 @@ class IAC extends PluginBase implements Listener {
         $this->getServer()->getPluginManager()->registerEvents(new SessionListener(), $this);
         ##Register
         Registery::register();
+
+        ## Log
+        $this->getLogger()->notice("You are using an anticheat in Alpha, this is mean't for testing not yet for production servers!");
     }
 }
