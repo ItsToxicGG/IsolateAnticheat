@@ -11,7 +11,7 @@ use Toxic\checks\Check;
 use Toxic\Session;
 use Toxic\utils\Maths;
 
-class SpeedA extends Check {
+class SpeedB extends Check {
     public function getId(): int{
         return 0;
     }
@@ -25,7 +25,7 @@ class SpeedA extends Check {
     }
 
     public function getSubtype(): string{
-        return "A";
+        return "B";
     }
 
     public function getType(): string{

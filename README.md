@@ -3,7 +3,7 @@
 Isolate Anticheat originally an Vanila BehaviourPack anticheat mean't for worlds, realms and servers that are bds or bdsx software
 now in PocketMine-MP
 
-And yes im an anticheat developer, not someone trying, best anticheats projects: DAC-TST [Main DEV]
+*This is just a test and made because of boardem*
 
 ## Features
 

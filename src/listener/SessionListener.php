@@ -11,6 +11,7 @@ use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerJumpEvent;
+use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerToggleFlightEvent;
@@ -153,5 +154,11 @@ class SessionListener implements Listener {
         $player = $event->getPlayer();
         $session = Session::get($player);
         if ($session === null) return;
+    }
+
+    public function onLogin(PlayerLoginEvent $event){
+        $player = $event->getPlayer();
+        // register
+        $session = Session::get($player);
     }
 }

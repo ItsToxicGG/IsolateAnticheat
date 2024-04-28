@@ -27,8 +27,6 @@ abstract class Check {
     # Type - no description
     abstract public function getType(): string;
 
-    public const TYPE = TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " ";
-
     public array $flag = [];
     public array $lastFlag = [];
 
@@ -80,9 +78,9 @@ abstract class Check {
             $uuid = $player->getUniqueId()->__toString();            
             if ($this->bypass($staff)){
                 if (!$kick){
-                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has failed " . self::TYPE . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . "." . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
+                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has failed " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . "." . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
                 } else {
-                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has been kicked " . self::TYPE . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . "." . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
+                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has been kicked " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . "." . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
                 }
             }
 		}
