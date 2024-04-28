@@ -30,6 +30,7 @@ class Session {
      public bool $jumping = false;
      public int $input;
      private array $tags = [];
+     private array $location = [];
 
      public function isJumping(): bool{
         return $this->jumping;
@@ -63,6 +64,14 @@ class Session {
 		if (isset($this->tags[$xuid = $this->xuid][$tag])) {
 			unset($this->tags[$xuid][$tag]);
 		}
+	}
+
+    public function getLocation() : array {
+		return $this->location;
+	}
+
+	public function setLocation(Location $from, Location $to) : void {
+		$this->location = ["from" => $from, "to" => $to];
 	}
 
     ## Ticks

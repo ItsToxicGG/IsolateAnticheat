@@ -1,6 +1,6 @@
 <?php
 
-namespace DAC\Checks\movement\sprint;
+namespace Toxic\Checks\movement\sprint;
 
 use pocketmine\block\BlockTypeIds;
 use pocketmine\entity\effect\VanillaEffects;

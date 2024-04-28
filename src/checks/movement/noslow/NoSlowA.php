@@ -1,6 +1,6 @@
 <?php
 
-namespace DAC\Checks\movement\noslow;
+namespace Toxic\Checks\movement\noslow;
 
 use pocketmine\block\BlockTypeIds;
 use pocketmine\event\player\PlayerMoveEvent;

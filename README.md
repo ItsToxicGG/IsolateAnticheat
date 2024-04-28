@@ -34,6 +34,8 @@ Below are some of the checks implemented in Isolate Anticheat:
 | Sprint (A) | ✅ | ⭕ | 
 | BadPackets (A) | ✅ | ⭕ | 
 | BadPackets (B) | ✅ | ⭕ | 
+| Scaffold (A) | ✅ | ⭕ | 
+| Tower (A) | ✅ | ⭕ | 
 
 ## Authors
 

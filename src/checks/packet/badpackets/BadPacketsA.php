@@ -1,6 +1,6 @@
 <?php
 
-namespace DAC\checks\packet\badpackets;
+namespace Toxic\checks\packet\badpackets;
 
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
