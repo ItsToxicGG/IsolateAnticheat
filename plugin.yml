@@ -1,0 +1,15 @@
+name: IAC
+description: Isolate Anticheat in PocketMine-MP
+version: 1.0.0-Alpha
+authors:
+- "ItsToxicGG"
+- "4urxra"
+- "ImShadowBonnieDev"
+api: 5.0.0
+main: Toxic\IAC
+src-namespace-prefix: ItsToxicGG
+
+permissions:
+   iac.bypass:
+     default: op
+     description: "Bypass anticheat checks."
