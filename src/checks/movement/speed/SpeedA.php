@@ -53,5 +53,25 @@ class SpeedA extends Check {
         $speed = $distance / 0.1;
     
         $player->sendMessage(Check::PREFIX . "speed=$speed");
+
+        if ($player->isSprinting() && $session->isJumping()){
+            $maxSpeed = 11.1;
+        }
+
+        if (!$player->isSprinting() && !$session->isJumping()){
+            $maxSpeed = 4.5;
+        }
+
+        if (!$player->isSprinting() && $session->isJumping()){
+            $maxSpeed = 6.1;
+        }
+
+        if ($player->isSprinting() && !$session->isJumping()){
+            $maxSpeed = 6.2; // eh? 1 point ahead of one on top how tf?
+        }
+
+        if ($speed > $maxSpeed){
+            $this->flag($player, "Movement");
+        }
     }
 }
