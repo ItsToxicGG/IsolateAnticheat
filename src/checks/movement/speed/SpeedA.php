@@ -51,23 +51,29 @@ class SpeedA extends Check {
         $distance = sqrt($distanceX * $distanceX + $distanceY * $distanceY + $distanceZ * $distanceZ);
     
         $speed = $distance / 0.1;
-    
-        $player->sendMessage(Check::PREFIX . "speed=$speed");
+        
+        // player is falling
+        if ($currentPos->y < $previousPos->y) return; 
+        if ($session->getTeleportTicks() < 40) return;
+        if ($session->getMotionTicks() < 40) return;
+        if ($session->getAttackTicks() < 40) return;
+        if ($session->getFlightTicks() < 40) return;
+        if ($session->getGlideTicks() < 40) return;
 
         if ($player->isSprinting() && $session->isJumping()){
-            $maxSpeed = 11.1;
+            $maxSpeed = 13.1;
         }
 
         if (!$player->isSprinting() && !$session->isJumping()){
-            $maxSpeed = 4.5;
+            $maxSpeed = 9.7;
         }
 
         if (!$player->isSprinting() && $session->isJumping()){
-            $maxSpeed = 6.1;
+            $maxSpeed = 9.0;
         }
 
         if ($player->isSprinting() && !$session->isJumping()){
-            $maxSpeed = 6.2; // eh? 1 point ahead of one on top how tf?
+            $maxSpeed = 11.1; // eh? 1 point ahead of one on top how tf?
         }
 
         if ($speed > $maxSpeed){
