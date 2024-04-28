@@ -53,7 +53,7 @@ class SpeedA extends Check {
         $speed = $distance / 0.1;
         
         // player is falling
-        if ($currentPos->y < $previousPos->y) return; 
+        if ($previousPos->y < $currentPos->y) return; 
         if ($session->getTeleportTicks() < 40) return;
         if ($session->getMotionTicks() < 40) return;
         if ($session->getAttackTicks() < 40) return;
