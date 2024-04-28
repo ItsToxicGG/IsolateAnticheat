@@ -3,6 +3,8 @@
 Isolate Anticheat originally an Vanila BehaviourPack anticheat mean't for worlds, realms and servers that are bds or bdsx software
 now in PocketMine-MP
 
+And yes im an anticheat developer, not someone trying, best anticheats projects: DAC-TST [Main DEV]
+
 ## Features
 
 - Isolate Anticheat in PMMP
@@ -11,7 +13,11 @@ now in PocketMine-MP
 
 Below are some of the checks implemented in Isolate Anticheat:
 
-- [ ] TODO 
+**MAIN CHECKS:**
+- [ ] Fly [A ❌, B ❌, C ❌]
+- [ ] Speed [A ❌, B ❌]
+- [ ] Motion [A ❌, B ❌]
+- [ ] Scaffold [A ❌, B ❌, C ❌]
 
 ## Authors
 
