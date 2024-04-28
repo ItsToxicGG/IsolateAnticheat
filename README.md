@@ -14,7 +14,7 @@ And yes im an anticheat developer, not someone trying, best anticheats projects:
 Below are some of the checks implemented in Isolate Anticheat:
 
 **MAIN CHECKS:**
-- [ ] Fly [A ❌, B ❌, C ❌]
+- [ ] Fly [A ✅, B ❌, C ❌]
 - [ ] Speed [A ❌, B ❌]
 - [ ] Motion [A ❌, B ❌]
 - [ ] Scaffold [A ❌, B ❌, C ❌]
