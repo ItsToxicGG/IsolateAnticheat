@@ -13,7 +13,7 @@ use Toxic\utils\Maths;
 
 class SpeedB extends Check {
     public function getId(): int{
-        return 0;
+        return 5;
     }
 
     public function getName(): string{
@@ -42,5 +42,7 @@ class SpeedB extends Check {
         if ($session == null) return;
 
         $speed = Maths::getSpeed($player, $event->getFrom());
+
+        $player->sendMessage(Check::PREFIX . "Speed=$speed");
     }
 }

@@ -19,17 +19,21 @@ Below are some of the checks implemented in Isolate Anticheat:
 **CHECKS [INCLUDING PLANNED ONES]:**
 
 ✅ = Completed
-⭕ = Working on it
+⭕ = Working on it / dont know if its detection rate
 ❌ = Todo
 
 | Check | Status | Detection rate |
 | -------- | -------- | -------- |
 | Speed (A) | ✅ | 91% |
 | Speed (B) | ⭕ | ⭕ |
-| Fly (A) | ✅ | 14% |
+| Fly (A) | ✅ | ⭕ |
 | Fly (B) | ✅ | 97% |
 | Motion (A, B, C) | ❌ | ❌ | 
 | Scaffold (A, B, C) | ❌ | ❌ | 
+| NoSlow (A) | ✅ | ⭕ | 
+| Sprint (A) | ✅ | ⭕ | 
+| BadPackets (A) | ✅ | ⭕ | 
+| BadPackets (B) | ✅ | ⭕ | 
 
 ## Authors
 

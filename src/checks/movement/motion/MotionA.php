@@ -5,7 +5,7 @@ use Toxic\checks\Check;
 
 class MotionA extends Check {
     public function getId(): int{
-        return 0;
+        return 3;
     }
 
     public function getName(): string{

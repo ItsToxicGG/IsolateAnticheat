@@ -15,7 +15,7 @@ use Toxic\utils\Blocks;
 class FlyA extends Check {
 
     public function getId(): int{
-        return 0;
+        return 1;
     }
 
     public function getName(): string{

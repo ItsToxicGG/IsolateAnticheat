@@ -9,7 +9,7 @@ use Toxic\utils\Maths;
 
 class ScaffoldA extends Check {
     public function getId(): int{
-        return 0;
+        return 6;
     }
 
     public function getName(): string{
