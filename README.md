@@ -7,6 +7,8 @@ now in PocketMine-MP
 
 *This is just a test and made because of boardem*
 
+*Alternative anticheats - Zuri, DAC & Guardian + not recommend oomph* 
+
 ## Features
 
 - Isolate Anticheat in PMMP
