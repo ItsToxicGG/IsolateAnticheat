@@ -47,9 +47,7 @@ class TowerB extends Check {
 
         if (
             !$player->isFlying() &&
-            $session->isJumping() &&
-            $player->getMotion()->y < 1 &&
-            $player->getFallDistance() < 0 &&
+            !$session->isJumping() &&
             $block->getPosition()->x === $blockUnder->getPosition()->x &&
             $block->getPosition()->y === $blockUnder->getPosition()->y &&
             $block->getPosition()->z === $blockUnder->getPosition()->z &&
