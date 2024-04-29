@@ -5,7 +5,7 @@ namespace Toxic\checks;
 use Toxic\checks\movement\fly\{FlyA, FlyB};
 use Toxic\checks\movement\motion\{MotionA};
 use Toxic\checks\movement\speed\{SpeedA, SpeedB};
-use Toxic\checks\world\scaffold\{ScaffoldA, TowerA};
+use Toxic\checks\world\scaffold\{ScaffoldA, TowerA, TowerB};
 use Toxic\checks\movement\noslow\{NoSlowA};
 use Toxic\checks\packet\badpackets\{BadPacketsA, BadPacketsB};
 
@@ -21,7 +21,8 @@ class Registery {
             new TowerA(),
             new NoSlowA(),
             new BadPacketsA(),
-            new BadPacketsB()
+            new BadPacketsB(),
+            new TowerB()
         ];
 
         foreach ($checks as $check){

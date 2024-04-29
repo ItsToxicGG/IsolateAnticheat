@@ -36,6 +36,7 @@ Below are some of the checks implemented in Isolate Anticheat:
 | BadPackets (B) | ✅ | ⭕ | 
 | Scaffold (A) | ✅ | ⭕ | 
 | Tower (A) | ✅ | ⭕ | 
+| Tower (B) | ✅ | ⭕ | 
 
 ## Authors
 

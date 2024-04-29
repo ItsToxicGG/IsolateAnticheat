@@ -2,14 +2,17 @@
 
 namespace Toxic\checks\world\scaffold;
 
+use pocketmine\block\BlockTypeIds;
+use pocketmine\entity\effect\VanillaEffects;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\player\GameMode;
 use Toxic\checks\Check;
 use Toxic\Session;
 use Toxic\utils\Blocks;
 use Toxic\utils\Maths;
 
-class TowerA extends Check {
+class TowerB extends Check {
     public function getId(): int{
         return 6;
     }
@@ -23,7 +26,7 @@ class TowerA extends Check {
     }
 
     public function getSubtype(): string{
-        return "A";
+        return "B";
     }
 
     public function getType(): string{
@@ -39,11 +42,24 @@ class TowerA extends Check {
         $session = Session::get($player);
         if ($session === null) return;
         $block = $event->getBlockAgainst();
-        $playerLocation = $player->getLocation();
+
         $blockUnder = Blocks::getBlockBelow($player);
+
+        if (
+            !$player->isFlying() &&
+            $session->isJumping() &&
+            $player->getMotion()->y < 1 &&
+            $player->getFallDistance() < 0 &&
+            $block->getPosition()->x === $blockUnder->getPosition()->x &&
+            $block->getPosition()->y === $blockUnder->getPosition()->y &&
+            $block->getPosition()->z === $blockUnder->getPosition()->z &&
+            !$player->getEffects()->has(VanillaEffects::JUMP_BOOST())
+        ) {
+            $yPosDiff = abs($player->getLocation()->y % 1);
         
-        if ($playerLocation->getPitch() == 35 && $blockUnder->getPosition()->getX() === $block->getPosition()->getX() && $blockUnder->getPosition()->getZ() === $block->getPosition()->getZ()) {
-            $this->flag($player, "Placement");
+            if ($yPosDiff > 0.35 && $player->getGamemode() !== GameMode::CREATIVE() && !$player->getAllowFlight()) {
+                $this->flag($player, "Tower", "B");
+            }
         }
     }
 }
