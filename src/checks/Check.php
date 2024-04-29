@@ -10,7 +10,7 @@ use Toxic\IAC;
 
 abstract class Check {
 
-    public const PREFIX = TF::BLACK . "[" . TF::DARK_PURPLE . "Isolate" . TF::BLACK . "]" . TF::RESET . " ";
+    public const PREFIX = TF::DARK_GRAY . "[" . TF::DARK_PURPLE . "Isolate" . TF::DARK_GRAY . "]" . TF::RESET . " ";
 
     public static array $enabledChecks = [];
     public static array $allChecks = [];
@@ -57,11 +57,11 @@ abstract class Check {
             $this->notify($player, true);
  
             if (!$this->kick()) return;
-            IAC::getInstance()->getLogger()->info(Check::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has been kicked " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . ". " . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
-            $player->kick(TF::DARK_GRAY . "You were kicked from the game: " . self::PREFIX . ">> " . TF::GOLD . "Unfair Advantage. " . TF::BLACK . "[" . TF::DARK_RED . $this->getName() . TF::BLACK . "]");
+            IAC::getInstance()->getLogger()->info(Check::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has been kicked " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . ". " . TF::WHITE . "[" . TF::DARK_GRAY . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
+            $player->kick(TF::DARK_GRAY . "You were kicked from the game: " . self::PREFIX . ">> " . TF::GOLD . "Unfair Advantage. " . TF::DARK_GRAY . "[" . TF::DARK_RED . $this->getName() . TF::DARK_GRAY . "]");
         } else {
             $this->notify($player);
-            IAC::getInstance()->getLogger()->info(Check::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has failed " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . ". " . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
+            IAC::getInstance()->getLogger()->info(Check::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has failed " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . ". " . TF::WHITE . "[" . TF::DARK_GRAY . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
             $this->flag[$player->getUniqueId()->__toString()][$this->getId()] += 1;
 			if (!isset($this->lastFlag[$player->getUniqueId()->__toString()][$this->getId()])) {
 				$this->lastFlag[$player->getUniqueId()->__toString()][$this->getId()] = microtime(true);
@@ -80,9 +80,9 @@ abstract class Check {
             $uuid = $player->getUniqueId()->__toString();            
             if ($this->bypass($staff)){
                 if (!$kick){
-                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has failed " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . ". " . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
+                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has failed " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . ". " . TF::WHITE . "[" . TF::DARK_GRAY . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
                 } else {
-                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has been kicked " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . ". " . TF::WHITE . "[" . TF::BLACK . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
+                    $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has been kicked " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . ". " . TF::WHITE . "[" . TF::DARK_GRAY . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
                 }
             }
 		}

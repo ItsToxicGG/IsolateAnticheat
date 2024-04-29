@@ -25,7 +25,7 @@ Below are some of the checks implemented in Isolate Anticheat:
 | Check | Status | Detection rate |
 | -------- | -------- | -------- |
 | Speed (A) | ✅ | 91% |
-| Speed (B) | ⭕ | ⭕ |
+| Speed (B) | ✅ | ⭕ |
 | Fly (A) | ✅ | ⭕ |
 | Fly (B) | ✅ | 97% |
 | Motion (A, B, C) | ❌ | ❌ | 

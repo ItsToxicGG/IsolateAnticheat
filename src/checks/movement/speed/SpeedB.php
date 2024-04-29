@@ -43,6 +43,6 @@ class SpeedB extends Check {
 
         $speed = Maths::getSpeed($player, $event->getFrom());
 
-        $player->sendMessage(Check::PREFIX . "Speed=$speed");
+        // $player->sendMessage(Check::PREFIX . "Speed=$speed");
     }
 }
