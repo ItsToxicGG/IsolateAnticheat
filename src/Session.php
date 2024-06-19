@@ -91,6 +91,8 @@ class Session {
     public array $glideTicks = [];
     public array $motionTicks = [];
     public array $chatTicks = [];
+
+    public bool $checkAlertsWithBypass = false;
     
     public function getTeleportTicks(): float {
         $player = $this->getPlayer();
@@ -361,5 +363,13 @@ class Session {
         if ($player == null) return;
         $playerId = $player->getUniqueId()->toString();
         $this->chatTicks[$playerId] = microtime(true) * 20;
+    }
+
+    public function setCheckAlertsWithBypass(bool $data): void {
+        $this->checkAlertsWithBypass = $data;
+    }
+
+    public function hasCheckAlertsWithBypass(): bool {
+        return $this->checkAlertsWithBypass;
     }
 }

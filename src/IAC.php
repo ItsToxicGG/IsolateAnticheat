@@ -27,6 +27,8 @@ class IAC extends PluginBase implements Listener {
         ##Events
         $this->getServer()->getPluginManager()->registerEvents(new CheckListener(), $this);
         $this->getServer()->getPluginManager()->registerEvents(new SessionListener(), $this);
+
+        
         ##Register
         Registery::register();
 

@@ -7,6 +7,7 @@ use pocketmine\player\Player;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\Server;
 use Toxic\IAC;
+use Toxic\Session;
 
 abstract class Check {
 
@@ -78,7 +79,7 @@ abstract class Check {
     public function notify(Player $player, bool $kick = false){
         foreach (Server::getInstance()->getOnlinePlayers() as $staff) {
             $uuid = $player->getUniqueId()->__toString();            
-            if ($this->bypass($staff)){
+            if ($this->bypass($staff) || $player->hasPermission("iac.bypass")){
                 if (!$kick){
                     $player->sendMessage(self::PREFIX . TF::WHITE . $player->getName() . " " . TF::DARK_RED . "has failed " . TF::AQUA . "[" . $this->getType() . "]" . TF::RESET . " " . TF::DARK_PURPLE . $this->getName() . TF::AQUA . "/" . TF::WHITE . $this->getSubtype() . ". " . TF::WHITE . "[" . TF::DARK_GRAY . "x" . TF::BLUE . $this->flag[$uuid][$this->getId()] . TF::WHITE . "]");
                 } else {
@@ -89,6 +90,12 @@ abstract class Check {
     }
 
     public function bypass(Player $player): bool{
+		$session = Session::get($player);
+		if ($session !== null){
+            if ($session->hasCheckAlertsWithBypass()){
+				return false;
+			}
+		}
         return $player->hasPermission("iac.bypass");
     }
 }
