@@ -10,6 +10,7 @@ use pocketmine\plugin\PluginBase;
 use Toxic\checks\CheckListener;
 use Toxic\checks\Registery;
 use Toxic\listener\SessionListener;
+use Toxic\commands\AlertsWithBypassCommand;
 
 class IAC extends PluginBase implements Listener {
 
@@ -28,7 +29,7 @@ class IAC extends PluginBase implements Listener {
         $this->getServer()->getPluginManager()->registerEvents(new CheckListener(), $this);
         $this->getServer()->getPluginManager()->registerEvents(new SessionListener(), $this);
 
-        
+        $this->getServer()->getCommandMap()->register("alertswithbypass", new AlertsWithBypassCommand());
         ##Register
         Registery::register();
 
