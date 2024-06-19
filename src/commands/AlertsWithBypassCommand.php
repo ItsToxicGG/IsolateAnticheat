@@ -22,10 +22,10 @@ class AlertsWithBypassCommand extends Command {
             $ses = Session::get($sender);
             if ($ses->hasCheckAlertsWithBypass()){
                  $ses->setCheckAlertsWithBypass(false);
-                 $player->sendMessage("You are bypassed with op");
+                 $sender->sendMessage("You are bypassed with op");
             } else {
                 $ses->setCheckAlertsWithBypass(true);
-                $player->sendMessage("You are no longer bypassed with op");
+                $sender->sendMessage("You are no longer bypassed with op");
             }
             return true;
         } else {
