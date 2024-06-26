@@ -37,7 +37,7 @@ class SessionListener implements Listener {
         if ($packet instanceof PlayerAuthInputPacket){
             $inputMode = $packet->getInputMode();
             $session->setInput($inputMode);
-            if (InputConstants::hasFlag($packet, PlayerAuthInputFlags::JUMPING)){
+            if (InputConstants::hasFlag($packet, PlayerAuthInputFlags::START_JUMPING)){
                 $session->setJumping(true);
             } else {
                 $session->setJumping(false);
